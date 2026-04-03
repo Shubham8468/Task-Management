@@ -24,9 +24,12 @@ export const createTask = catchAsyncError(async (req, res, next) => {
 
 export const getAllTasks = catchAsyncError(async (req, res, next) => {
   const tasks = await Task.find();
+  const count=tasks.length; // Find length of total task
   res.status(200).json({
+    count,
     success: true,
     tasks,
+
   });
 });
 
